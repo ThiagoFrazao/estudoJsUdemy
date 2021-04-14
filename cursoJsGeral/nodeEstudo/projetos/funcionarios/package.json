@@ -1,0 +1,17 @@
+{
+  "name": "funcionarios",
+  "version": "1.0.0",
+  "description": "Projeto exemplo npm init curso Udemy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "udemy"
+  ],
+  "author": "Thiago Frazão",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
