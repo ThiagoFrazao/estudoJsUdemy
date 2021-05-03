@@ -18,6 +18,7 @@ let produtos = [
     }
 ]
 
+app.get('/', (req, res) => res.send(cool()))
 app.get('/cool', (req, res) => res.send(cool()))
 
 app.get("/produtos", (req, res, next) => {
