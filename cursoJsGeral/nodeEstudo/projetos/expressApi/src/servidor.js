@@ -1,7 +1,7 @@
 const express = require('express')
 const cool = require('cool-ascii-faces')
 const app = express()
-const porta = 8080
+const porta = 5000
 
 let produtos = [
     {
