@@ -1,4 +1,5 @@
 const express = require('express')
+const cool = require('cool-ascii-faces')
 const app = express()
 const porta = 8080
 
@@ -16,6 +17,8 @@ let produtos = [
         preco: 544.16
     }
 ]
+
+app.get('/cool', (req, res) => res.send(cool()))
 
 app.get("/produtos", (req, res, next) => {
     res.send(produtos)
