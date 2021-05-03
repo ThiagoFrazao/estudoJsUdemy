@@ -2,15 +2,16 @@
   "name": "expressApi",
   "version": "1.0.0",
   "description": "Api para estudo do Express NodeJS",
-  "main": "src/servidor.js",
+  "main": "cursoJsGeral/nodeEstudo/projetos/expressApi/src/servidor.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "node cursoJsGeral/nodeEstudo/projetos/expressApi/src/servidor.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Thiago da Costa Pinto Frazao de Sousa",
   "license": "ISC",
   "dependencies": {
+    "cool-ascii-faces": "^1.3.4",
     "express": "4.16.2"
   },
   "devDependencies": {
