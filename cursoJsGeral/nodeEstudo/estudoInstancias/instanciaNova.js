@@ -1,8 +1,8 @@
 //Factory de objetos
 module.exports = () => {
     return {
-        valor : 10,
-        aumentarValor() {
+        valor : 1,
+        incrementarValor() {
             this.valor++;
         }
     }
