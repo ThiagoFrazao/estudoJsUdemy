@@ -14,9 +14,11 @@ export class PainelComponent implements OnInit {
   public resposta : string;
   public fraseDaRodada : Frase;
   public rodadaAtual : number;
+  public progresso: number;
+  public tentativas: number;
 
   private audioPath : string = "/assets/faustao-errou.mp3";
-  private audioFile : any;
+  private audioFile : HTMLAudioElement;
 
   constructor() { 
     this.frases = FRASES;
@@ -25,6 +27,8 @@ export class PainelComponent implements OnInit {
     this.instrucao = "Traduza a frase:";
     this.resposta = "";
     this.audioFile = new Audio(this.audioPath);
+    this.progresso = 0;
+    this.tentativas = 3;
   }
 
   public atualizarResposta(eventoTexto : Event): void {
@@ -34,15 +38,40 @@ export class PainelComponent implements OnInit {
 
   public verificarResposta(): void {
     if(this.resposta === this.fraseDaRodada.frasePtBr) {
-      this.rodadaAtual += 1;
-      console.log("Show de bola em...")
+        this.avancarJogo();
     } else {
-      this.audioFile.play();
+      this.errouResposta();
     }
   }
 
+  private avancarJogo(): void {
+    this.rodadaAtual++;
+    this.progresso += 25;
+    if(this.rodadaAtual == this.frases.length){
+      this.reiniciarJogo();
+    }
+    this.fraseDaRodada = this.frases[this.rodadaAtual];
+    this.resposta = '';
+  }
+
+  private errouResposta(): void {
+    this.audioFile.play();
+    this.tentativas--;
+    if(this.tentativas == -1) {
+      alert("Você perdeu!")
+      this.reiniciarJogo();
+    } else {
+      alert("A tradução está incorreta.")
+    }  
+  }
+
+  private reiniciarJogo(): void {
+    this.rodadaAtual = 0;
+    this.progresso = 0;
+    this.resposta = '';
+    this.tentativas = 3;
+  }
 
   ngOnInit(): void {
   }
-
 }
