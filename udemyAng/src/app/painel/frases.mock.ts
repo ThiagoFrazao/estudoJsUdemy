@@ -16,6 +16,10 @@ export const FRASES: Frase[] = [
     {
         fraseEng: 'He had orders to observe but not interfere.', 
         frasePtBr: 'Ele tinha ordens para observar, mas não interferir.'
+    },
+    {
+        fraseEng: 'Play again!!!', 
+        frasePtBr: 'Jogue novamente!!!'
     }    
 ]
 

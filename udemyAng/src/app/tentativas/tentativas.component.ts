@@ -9,7 +9,7 @@ import { Coracao } from './coracao.model';
 export class TentativasComponent implements OnInit, OnChanges {
 
   
-  @Input("tentativasRestantes") public tentativasRestantes: number = 3;
+  @Input("tentativasRestantes") public tentativasRestantes: number;
   public coracaoVazio: string = "/assets/CoracaoVazio.png";
   public coracaoCheio: string = "/assets/CoracaoCheio.png";
 
@@ -18,16 +18,17 @@ export class TentativasComponent implements OnInit, OnChanges {
 
   constructor() { 
     this.coracoes = this.iniciarCoracoes();
-
+    this.tentativasRestantes = 3;
   }
 
   ngOnChanges(): void {
-    if(this.tentativasRestantes === -1) {
+    if(this.tentativasRestantes === 3) {
       this.coracoes = this.iniciarCoracoes();      
-    } else if(this.tentativasRestantes <= 3) {
+    } else if(this.tentativasRestantes < 3) {
+      console.log("derrota")
       this.coracoes[this.tentativasRestantes].isCheio = false;
     }
-    console.log("mudanca: ", this.tentativasRestantes)
+    
   }
 
   ngOnInit(): void {

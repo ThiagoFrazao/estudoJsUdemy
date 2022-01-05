@@ -16,6 +16,7 @@ export class PainelComponent implements OnInit {
   public rodadaAtual : number;
   public progresso: number;
   public tentativas: number;
+  public fimJogo: boolean;
 
   private audioPath : string = "/assets/faustao-errou.mp3";
   private audioFile : HTMLAudioElement;
@@ -29,6 +30,7 @@ export class PainelComponent implements OnInit {
     this.audioFile = new Audio(this.audioPath);
     this.progresso = 0;
     this.tentativas = 3;
+    this.fimJogo = false;
   }
 
   public atualizarResposta(eventoTexto : Event): void {
@@ -47,25 +49,28 @@ export class PainelComponent implements OnInit {
   private avancarJogo(): void {
     this.rodadaAtual++;
     this.progresso += 25;
-    if(this.rodadaAtual == this.frases.length){
-      this.reiniciarJogo();
-    }
     this.fraseDaRodada = this.frases[this.rodadaAtual];
-    this.resposta = '';
+    if(this.rodadaAtual == (this.frases.length -1)){
+      alert("Você ganhou!!!!")
+      this.fimJogo = true;
+      this.resposta = this.fraseDaRodada.frasePtBr;
+    } else {
+      this.resposta = '';
+    }
   }
 
   private errouResposta(): void {
     this.audioFile.play();
     this.tentativas--;
-    if(this.tentativas == -1) {
+    if(this.tentativas == 0) {
       alert("Você perdeu!")
-      this.reiniciarJogo();
+      this.fimJogo = true;
     } else {
       alert("A tradução está incorreta.")
     }  
   }
 
-  private reiniciarJogo(): void {
+  public reiniciarJogo(): void {
     this.rodadaAtual = 0;
     this.progresso = 0;
     this.resposta = '';
