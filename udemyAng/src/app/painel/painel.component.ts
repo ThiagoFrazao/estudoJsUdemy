@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Frase } from '../shared/frase.model';
 import { FRASES } from './frases.mock';
 
@@ -17,6 +17,7 @@ export class PainelComponent implements OnInit {
   public progresso: number;
   public tentativas: number;
   public fimJogo: boolean;
+  @Output() public encerrarJogoEvent: EventEmitter<string> = new EventEmitter();
 
   private audioPath : string = "/assets/faustao-errou.mp3";
   private audioFile : HTMLAudioElement;
@@ -51,9 +52,9 @@ export class PainelComponent implements OnInit {
     this.progresso += 25;
     this.fraseDaRodada = this.frases[this.rodadaAtual];
     if(this.rodadaAtual == (this.frases.length -1)){
-      alert("Você ganhou!!!!")
       this.fimJogo = true;
       this.resposta = this.fraseDaRodada.frasePtBr;
+      this.encerrarJogoEvent.emit("Você ganhou!!!!")
     } else {
       this.resposta = '';
     }
@@ -63,8 +64,8 @@ export class PainelComponent implements OnInit {
     this.audioFile.play();
     this.tentativas--;
     if(this.tentativas == 0) {
-      alert("Você perdeu!")
       this.fimJogo = true;
+      this.encerrarJogoEvent.emit("Você perdeu!")
     } else {
       alert("A tradução está incorreta.")
     }  
@@ -75,6 +76,7 @@ export class PainelComponent implements OnInit {
     this.progresso = 0;
     this.resposta = '';
     this.tentativas = 3;
+    this.fimJogo = false;
   }
 
   ngOnInit(): void {

@@ -1,2 +1,8 @@
 <app-topo></app-topo>
-<app-painel></app-painel>
+<div *ngIf="jogoNaoAcabou">
+    <app-painel (encerrarJogoEvent)="telaFinal($event)"></app-painel>
+</div>
+<div *ngIf="!jogoNaoAcabou">
+    <h1>Tente novamente!</h1>
+    <button type="button" class="btn btn-primary" (click)="reiniciarJogo()">Reiniciar</button>
+</div>

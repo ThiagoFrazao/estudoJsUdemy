@@ -25,7 +25,6 @@ export class TentativasComponent implements OnInit, OnChanges {
     if(this.tentativasRestantes === 3) {
       this.coracoes = this.iniciarCoracoes();      
     } else if(this.tentativasRestantes < 3) {
-      console.log("derrota")
       this.coracoes[this.tentativasRestantes].isCheio = false;
     }
     

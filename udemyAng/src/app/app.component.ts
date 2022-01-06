@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'udemyAng';
+
+  public jogoNaoAcabou: boolean;
+
+  constructor() {
+    this.jogoNaoAcabou = true;
+  }
+
+  public telaFinal(final: string): void {
+    console.log(final);
+    alert(final);
+    this.jogoNaoAcabou = false;
+  }
+
+  public reiniciarJogo(): void {
+    this.jogoNaoAcabou = true;
+  }
 }
