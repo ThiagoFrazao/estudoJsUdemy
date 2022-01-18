@@ -8,14 +8,20 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   public jogoNaoAcabou: boolean;
+  public foiVitoria: boolean;
 
   constructor() {
     this.jogoNaoAcabou = true;
+    this.foiVitoria = false;
   }
 
-  public telaFinal(final: string): void {
-    console.log(final);
-    alert(final);
+  public telaFinal(isVitoria: boolean): void {
+    this.foiVitoria = isVitoria;
+    if(this.foiVitoria) {
+      alert("Você venceu!")
+    } else {
+      alert("Você perdeu!")
+    }
     this.jogoNaoAcabou = false;
   }
 
