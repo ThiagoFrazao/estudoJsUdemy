@@ -17,11 +17,6 @@ export class AppComponent {
 
   public telaFinal(isVitoria: boolean): void {
     this.foiVitoria = isVitoria;
-    if(this.foiVitoria) {
-      alert("Você venceu!")
-    } else {
-      alert("Você perdeu!")
-    }
     this.jogoNaoAcabou = false;
   }
 
